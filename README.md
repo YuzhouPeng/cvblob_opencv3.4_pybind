@@ -1,10 +1,9 @@
-# cvblob_opencv4.2
-This is a cvblob project inheried from cvblob, which could detect mutiple shapes from images.
+# cvblob_opencv3.4
+This is a cvblob(blob detection) project inheried from cvblob, which could detect mutiple shapes from images. Adding pybind11 binding so it could be used in python scripts.
 
 # requirements
 
 TensorRT 7.0 (you need to install tensorrt first)<br>
-Cuda 10.2<br>
 Python3.7<br>
 opencv 4.4<br>
 cmake 3.18<br>
