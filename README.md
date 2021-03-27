@@ -3,9 +3,8 @@ This is a cvblob(blob detection) project inheried from cvblob, which could detec
 
 # requirements
 
-TensorRT 7.0 (you need to install tensorrt first)<br>
-Python3.7<br>
-opencv 4.4<br>
+pybind11<br>
+opencv 3.4<br>
 cmake 3.18<br>
 # train .pth file and convert .wts
 
