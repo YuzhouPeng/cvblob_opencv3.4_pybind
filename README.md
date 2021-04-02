@@ -2,60 +2,40 @@
 This is a cvblob(blob detection) project inheried from cvblob, which could detect mutiple shapes from images. Adding pybind11 binding so it could be used in python scripts.
 
 # requirements
-
+ubuntu16.04<br>
 pybind11<br>
 opencv 3.4<br>
 cmake 3.18<br>
 # train .pth file and convert .wts
 
+## install opencv
+
+install opencv3.4 in your computer and add path to LD_LIBRARY_PATH.<br>
+
 ## create env
 
 ```
-pip install -r requirements.txt
+pip install -r cvblob_requirements.txt
 ```
 
-## train .pth file
 
-train your dataset by following [pytorch-unet](https://github.com/milesial/Pytorch-UNet) and generate .pth file.<br>
-
-## convert .wts
-
-run gen_wts from utils folder, and move it to project folder (you need to run with east training environment)(<br>
-
-# generate engine file and infer
-
-## create build folder in project folder
+## make file, generate test file
 ```
-mkdir build
-```
-
-## make file, generate exec file
-```
-cd build
-cmake ..
+cmake .
 make
 ```
 
-## generate TensorRT engine file and infer image
+## run test script and show result
 ```
-unet -s
+cd bin
 ```
-then a unet exec file will generated, you can use unet -d to infer files in a folder<br>
+then a test exec file will generated, it will inter test.png in test folder and show blobs<br>
 ```
-unet -d ../samples
+./test
 ```
 
-# efficiency
-the speed of tensorRT engine is much faster
-
- pytorch | TensorRT FP32 | TensorRT FP16
- ---- | ----- | ------  
- 816x672  | 816x672 | 816x672 
- 58ms  | 43ms (batchsize 8) | 14ms (batchsize 8) 
 
 
-# Further development
-
-1. add INT8 calibrator<br>
-2. add custom plugin<br>
-etc
+# pybind11 binding and ctypes binding
+dependency is shown in root dir CMakeLists.txt<br>
+run function in testpybind1.py to test pybind function<br>
