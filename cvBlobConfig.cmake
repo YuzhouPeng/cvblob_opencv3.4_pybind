@@ -28,16 +28,16 @@ get_filename_component(THIS_CVBLOB_CONFIG_PATH "${CMAKE_CURRENT_LIST_FILE}" PATH
 # ======================================================
 # Include directories to add to the user project:
 # ======================================================
-INCLUDE_DIRECTORIES(/home/sycv/workplace/pengyuzhou/cvblob/include/)
+INCLUDE_DIRECTORIES(/home/sycv/workplace/pengyuzhou/elweb3.5/el_webservice/algorithm/after_proc_algo/cvblob/include/)
 # Provide the include directories to the caller
-SET(cvBlob_INCLUDE_DIRS /home/sycv/workplace/pengyuzhou/cvblob/include/)
+SET(cvBlob_INCLUDE_DIRS /home/sycv/workplace/pengyuzhou/elweb3.5/el_webservice/algorithm/after_proc_algo/cvblob/include/)
 
 # ======================================================
 # Link directories to add to the user project:
 # ======================================================
-LINK_DIRECTORIES("/home/sycv/workplace/pengyuzhou/cvblob/lib")
+LINK_DIRECTORIES("/home/sycv/workplace/pengyuzhou/elweb3.5/el_webservice/algorithm/after_proc_algo/cvblob/lib")
 # Provide the libs directory anyway, it may be needed in some cases.
-SET(cvBlob_LIB_DIR "/home/sycv/workplace/pengyuzhou/cvblob/lib")
+SET(cvBlob_LIB_DIR "/home/sycv/workplace/pengyuzhou/elweb3.5/el_webservice/algorithm/after_proc_algo/cvblob/lib")
 
 # ====================================================================
 # Link libraries: e.g.   cvblob...

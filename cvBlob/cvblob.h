@@ -47,6 +47,15 @@
 #define __CV_END__ __END__
 #endif
 
+// struct Det {
+// unsigned int width;
+// unsigned int height;
+// unsigned int centeriodx;
+// unsigned int centeriody;
+// unsigned int longedge;
+// unsigned int area;
+// };
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -106,6 +115,10 @@ extern "C" {
 
   /// \brief Chain code contour.
   /// \see CvChainCodes
+
+
+
+
   struct CvContourChainCode
   {
     CvPoint startingPoint; ///< Point where contour begin.

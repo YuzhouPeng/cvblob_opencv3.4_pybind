@@ -90,11 +90,8 @@ namespace cvb
     if (!blob->centralMoments)
     {
       CV_ASSERT(img&&(img->depth==IPL_DEPTH_LABEL)&&(img->nChannels==1));
-
       //cvCentroid(blob); // Here?
-
       blob->u11=blob->u20=blob->u02=0.;
-
       // Only in the bounding box
       int stepIn = img->widthStep / (img->depth / 8);
       int img_width = img->width;
@@ -106,7 +103,6 @@ namespace cvb
 	img_height = img->roi->height;
 	img_offset = img->roi->xOffset + (img->roi->yOffset * stepIn);
       }
-
       CvLabel *imgData=(CvLabel *)img->imageData + (blob->miny * stepIn) + img_offset;
       for (unsigned int r=blob->miny;
 	  r<blob->maxy;
@@ -120,7 +116,6 @@ namespace cvb
 	    blob->u20+=tx*tx;
 	    blob->u02+=ty*ty;
 	  }
-
       blob->centralMoments = true;
     }
     __CV_END__;

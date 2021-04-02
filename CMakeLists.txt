@@ -119,13 +119,25 @@ else(WIN32)
 endif(WIN32)
 
 # target_link_libraries(addlibfiles libcvblob.so)
+# add_library(/home/sycv/workplace/pengyuzhou/cvblob/lib)
+include_directories(/usr/local/include/opencv4/opencv2/)
 
-# # target_link_libraries(addlibfiles, cvBlob)
-# set(addlibfiles
-#   test/test.cpp
-# )
+set(addlibfiles
+  test/test.cpp
+  # imgcodecs.hpp
+  # highgui.hpp
+)
+# include_directories(/usr/local/include/opencv4/opencv2/)
+add_library(testlib1 SHARED ${addlibfiles})
 
-# add_library(cvbloblib SHARED ${addlibfiles})
+# target_include_directories(testlib PRIVATE ./cvblob/)
+# target_include_directories(testlib PRIVATE /usr/local/include/opencv4/opencv2/)
+# set_target_properties(testlib PROPERTIES PUBLIC_HEADER cvblob.h)
+# set_target_properties(testlib PROPERTIES PUBLIC_HEADER imgcodecs.h)
+# set_target_properties(testlib PROPERTIES PUBLIC_HEADER highgui.h)
+# set_target_properties(testlib PROPERTIES PUBLIC_HEADER cv.h)
+
+target_link_libraries(testlib1 libcvblob.so)
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Blob library for OpenCV")
 set(CPACK_PACKAGE_CONTACT grendel.ccl@gmail.com)
@@ -145,5 +157,21 @@ set(CPACK_SOURCE_IGNORE_FILES
   "/\\\\.svn/"
   #     "^${PROJECT_SOURCE_DIR}/old/"
 )
+# pybind plugin
+set(CMAKE_BUILD_TYPE "Release")
+add_subdirectory(pybind11)
+find_package(PythonLibs)
+find_package(OpenCV REQUIRED)
+find_package(OpenMP)
+include_directories(${PYTHON_INCLUDE_DIRS})
+pybind11_add_module(test1 test1.cpp)
+target_link_libraries(test1 libcvblob.so)
+target_link_libraries(test1 ${OpenCV_LIBS})
+if(OpenMP_CXX_FOUND)
+target_link_libraries(test1 PUBLIC OpenMP::OpenMP_CXX)
+endif()
+
+
 
 include(CPack)
+
